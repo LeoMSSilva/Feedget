@@ -35,11 +35,16 @@ export type FeedbackType = keyof typeof feedbackTypes;
 export const WidgetForm = () => {
   const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
-  const handleRestartFeedback = () => setFeedbackType(null);
+  const onFeedbackTypeRestartRequest = () => {
+    setFeedbackSent(false);
+    setFeedbackType(null);
+  };
   return (
     <div className="flex flex-col items-center relative p-4 mb-4 rounded-2xl bg-zinc-900 shadow-lg w-[calc(100vw-2rem)] md:w-auto">
       {feedbackSent ? (
-        <FeedbackSuccessStep />
+        <FeedbackSuccessStep
+          onFeedbackTypeRestartRequest={onFeedbackTypeRestartRequest}
+        />
       ) : (
         <>
           {!feedbackType ? (
@@ -47,7 +52,7 @@ export const WidgetForm = () => {
           ) : (
             <FeedbackContinueStep
               feedbackType={feedbackType}
-              onFeedbackTypeRestartRequest={handleRestartFeedback}
+              onFeedbackTypeRestartRequest={onFeedbackTypeRestartRequest}
               onFeedbackSent={() => setFeedbackSent(true)}
             />
           )}
