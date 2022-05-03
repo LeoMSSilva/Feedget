@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { feedbackTypes } from '..';
 import { HeaderFeedback, IHeaderFeedback } from '../HeaderFeedback';
 import { ScreenshotButton } from '../ScreenshotButton';
@@ -6,7 +7,7 @@ export const FeedbackContinueStep = ({
   feedbackType,
   onFeedbackTypeRestartRequest,
 }: IHeaderFeedback) => {
-  const feedbackTypeInfos = feedbackTypes[feedbackType];
+  const [screenshot, setScreenshot] = useState<string | null>(null);
   return (
     <>
       <HeaderFeedback
@@ -19,7 +20,10 @@ export const FeedbackContinueStep = ({
           placeholder="Conte com detalhes o que está acontecendo..."
         />
         <footer className="flex gap-2 mt-2">
-          <ScreenshotButton />
+          <ScreenshotButton
+            screenshot={screenshot}
+            onScreenshotTook={setScreenshot}
+          />
           <button
             className="flex flex-1 justify-center items-center p-2 rounded-md text-sm bg-brand-500 border-transparent hover:bg-brand-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors duration-500 ease-linear"
             type="submit"
