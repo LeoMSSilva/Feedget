@@ -12,9 +12,15 @@ import { styles } from './styles';
 
 interface IForm {
 	feedbackType: FeedbackType;
+	onFeedbackTypeRemove: () => void;
+	onFeedbackSend: () => void;
 }
 
-export const Form = ({ feedbackType }: IForm) => {
+export const Form = ({
+	feedbackType,
+	onFeedbackTypeRemove,
+	onFeedbackSend,
+}: IForm) => {
 	const feedbackInfo = feedbackTypes[feedbackType];
 	const [screenshot, setScreenshot] = useState<string | null>(null);
 	const [isSendFeedback, setIsSendFeedback] = useState(false);
@@ -46,6 +52,9 @@ export const Form = ({ feedbackType }: IForm) => {
 			const screenshotBase64 = screenshot && (await parse64(screenshot));
 			console.warn(screenshotBase64);
 			setComment('');
+			comment !== ''
+				? onFeedbackSend()
+				: console.warn('O comentário é obrigatório!');
 		} catch (e) {
 			console.log(e);
 		} finally {
@@ -58,7 +67,7 @@ export const Form = ({ feedbackType }: IForm) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={onFeedbackTypeRemove}>
 					<ArrowLeft
 						size={24}
 						weight="bold"
