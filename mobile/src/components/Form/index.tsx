@@ -1,6 +1,8 @@
+import * as FileSystem from 'expo-file-system';
 import { ArrowLeft } from 'phosphor-react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { captureScreen } from 'react-native-view-shot';
 import { theme } from '../../theme';
 import { feedbackTypes } from '../../utils/feedbackTypes';
 import { Button } from '../Button';
@@ -14,6 +16,45 @@ interface IForm {
 
 export const Form = ({ feedbackType }: IForm) => {
 	const feedbackInfo = feedbackTypes[feedbackType];
+	const [screenshot, setScreenshot] = useState<string | null>(null);
+	const [isSendFeedback, setIsSendFeedback] = useState(false);
+	const [comment, setComment] = useState('');
+
+	const handleScreenshot = async () => {
+		try {
+			const uri = await captureScreen({ format: 'png', quality: 0.8 });
+			setScreenshot(uri);
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	const parse64 = async (screenshot: string) => {
+		const prefix64 = 'data:image/png;base64';
+		const suffix64 = await FileSystem.readAsStringAsync(screenshot, {
+			encoding: 'base64',
+		});
+		return prefix64 + suffix64;
+	};
+
+	const handleSendFeedback = async () => {
+		if (isSendFeedback) {
+			return;
+		}
+		setIsSendFeedback(true);
+		try {
+			const screenshotBase64 = screenshot && (await parse64(screenshot));
+			console.warn(screenshotBase64);
+			setComment('');
+		} catch (e) {
+			console.log(e);
+		} finally {
+			setIsSendFeedback(false);
+		}
+	};
+
+	const handleScreenshotRemove = () => setScreenshot(null);
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -35,15 +76,16 @@ export const Form = ({ feedbackType }: IForm) => {
 				style={styles.input}
 				placeholder="Conte com detalhes o que está acontecendo..."
 				placeholderTextColor={theme.colors.text_secondary}
+				onChangeText={setComment}
 			/>
 
 			<View style={styles.footer}>
 				<ScreenshotButton
-					screenshot="http://github.com/leomssilva.png"
-					onTakeShot={() => {}}
-					onRemoveShot={() => {}}
+					screenshot={screenshot}
+					onTakeShot={handleScreenshot}
+					onRemoveShot={handleScreenshotRemove}
 				/>
-				<Button isLoading={false} />
+				<Button onPress={handleSendFeedback} isLoading={isSendFeedback} />
 			</View>
 		</View>
 	);
