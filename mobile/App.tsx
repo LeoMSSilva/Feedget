@@ -1,9 +1,10 @@
-import AppLoading from 'expo-app-loading';
+import 'react-native-gesture-handler';
 import {
-	useFonts,
 	Inter_400Regular,
 	Inter_500Medium,
+	useFonts,
 } from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { theme } from './src/theme';
