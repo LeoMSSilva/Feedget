@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { FeedbackType } from '..';
-import { HeaderFeedback, IHeaderFeedback } from '../HeaderFeedback';
+import { api } from '../../../service/api';
+import { LoadingButton } from '../../LoadingButton';
+import { HeaderFeedback } from '../HeaderFeedback';
 import { ScreenshotButton } from '../ScreenshotButton';
 
 export interface IFeedbackContinueStep {
@@ -16,9 +18,21 @@ export const FeedbackContinueStep = ({
 }: IFeedbackContinueStep) => {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState<string>('');
-  const handleSubmitFeedback = (e: FormEvent) => {
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+  const handleSubmitFeedback = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(screenshot, comment);
+    setIsSendingFeedback(true);
+    try {
+      await api.post('/feedbacks', {
+        type: feedbackType,
+        comment,
+        screenshot,
+      });
+    } catch (e) {
+      console.log(e); 
+    } finally {
+      setIsSendingFeedback(false);
+    }
     onFeedbackSent();
   };
   return (
@@ -42,11 +56,11 @@ export const FeedbackContinueStep = ({
             onScreenshotTook={setScreenshot}
           />
           <button
-            disabled={comment.length === 0}
+            disabled={comment.length === 0 || isSendingFeedback}
             className="flex flex-1 justify-center items-center p-2 rounded-md text-sm bg-brand-500 border-transparent hover:bg-brand-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors duration-500 ease-linear disabled:opacity-50 disabled:bg-brand-500"
             type="submit"
           >
-            Enviar Feedback
+            {isSendingFeedback ? <LoadingButton /> : 'Enviar Feedback'}
           </button>
         </footer>
       </form>
