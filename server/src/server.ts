@@ -1,13 +1,15 @@
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import { routes } from './routers';
 
 const app = express();
+
+const port = process.env.PORT || 3333;
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(3333, () => {
-	console.log('HTTP server running on:\nhttp://localhost:3333');
+app.listen(port, () => {
+	console.log(`HTTP server running on:\nhttp://localhost:${port}`);
 });
