@@ -3,6 +3,7 @@ import { ArrowLeft } from 'phosphor-react-native';
 import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { captureScreen } from 'react-native-view-shot';
+import { api } from '../../service/api';
 import { theme } from '../../theme';
 import { feedbackTypes } from '../../utils/feedbackTypes';
 import { Button } from '../Button';
@@ -13,17 +14,17 @@ import { styles } from './styles';
 interface IForm {
 	feedbackType: FeedbackType;
 	onFeedbackTypeRemove: () => void;
-	onFeedbackSend: () => void;
+	onFeedbackSent: () => void;
 }
 
 export const Form = ({
 	feedbackType,
 	onFeedbackTypeRemove,
-	onFeedbackSend,
+	onFeedbackSent,
 }: IForm) => {
 	const feedbackInfo = feedbackTypes[feedbackType];
 	const [screenshot, setScreenshot] = useState<string | null>(null);
-	const [isSendFeedback, setIsSendFeedback] = useState(false);
+	const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 	const [comment, setComment] = useState('');
 
 	const handleScreenshot = async () => {
@@ -35,30 +36,30 @@ export const Form = ({
 		}
 	};
 
-	const parse64 = async (screenshot: string) => {
-		const prefix64 = 'data:image/png;base64';
-		const suffix64 = await FileSystem.readAsStringAsync(screenshot, {
-			encoding: 'base64',
-		});
-		return prefix64 + suffix64;
-	};
-
 	const handleSendFeedback = async () => {
-		if (isSendFeedback) {
+		if (isSendingFeedback) {
+			return;
+		} else if (comment === '') {
+			console.warn('O comentário é obrigatório!');
 			return;
 		}
-		setIsSendFeedback(true);
+		setIsSendingFeedback(true);
 		try {
-			const screenshotBase64 = screenshot && (await parse64(screenshot));
-			console.warn(screenshotBase64);
+			const screenshotBase64 =
+				screenshot &&
+				(await FileSystem.readAsStringAsync(screenshot, {
+					encoding: 'base64',
+				}));
+			await api.post('/feedbacks', {
+				type: feedbackType,
+				screenshot: `data:image/png;base64, ${screenshotBase64}`,
+				comment,
+			});
 			setComment('');
-			comment !== ''
-				? onFeedbackSend()
-				: console.warn('O comentário é obrigatório!');
+			onFeedbackSent();
 		} catch (e) {
 			console.log(e);
-		} finally {
-			setIsSendFeedback(false);
+			setIsSendingFeedback(false);
 		}
 	};
 
@@ -94,7 +95,7 @@ export const Form = ({
 					onTakeShot={handleScreenshot}
 					onRemoveShot={handleScreenshotRemove}
 				/>
-				<Button onPress={handleSendFeedback} isLoading={isSendFeedback} />
+				<Button onPress={handleSendFeedback} isLoading={isSendingFeedback} />
 			</View>
 		</View>
 	);

@@ -49,7 +49,7 @@ export const Widget = gestureHandlerRootHOC(() => {
 							<Form
 								feedbackType={feedbackType}
 								onFeedbackTypeRemove={handleRestartFeedback}
-								onFeedbackSend={handleFeedbackSend}
+								onFeedbackSent={handleFeedbackSend}
 							/>
 						) : (
 							<Success onSendAnotherFeedback={handleRestartFeedback} />
