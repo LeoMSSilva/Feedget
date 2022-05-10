@@ -29,15 +29,33 @@ export class SubmitFeedbackUseCase {
 		}
 
 		await this.feedbacksRepository.create({ type, comment, screenshot });
+		const body = [
+			`<center>`,
+			`<p style="font-family: sans-serif; text-align: justify; max-width: 600px; font-size: 20px; color: #000; font-weight: bold; ">#${type}: </p>`,
+			`${comment
+				.split('\n')
+				.map(
+					(line) =>
+						`<p style="font-family: sans-serif; text-align: justify; max-width: 600px; font-size: 16px; color: #111;">${line}</p>`,
+				)
+				.join('\n')
+				.replace('</p>,', '')}`,
+			`</center>`,
+			screenshot
+				? `
+				<center>
+					<img 
+						alt="Imagem do feedback"
+						style="max-width:600px !important; width: 100% !important; height="auto" display: block; border: 0px; margin: 0px;"
+						src="${screenshot}"
+					/>
+				</center>
+				`
+				: ``,
+		].join('\n');
 		await this.mailAdapter.sendMail({
 			subject: 'Novo Feedback',
-			body: [
-				`<div style="font-family: sans-serif; font-size:16px; color: #111;">`,
-				`<p>Tipo do feedback: ${type}</p>`,
-				`<p>Comentário: ${comment}</p>`,
-				screenshot ? `<img src="${screenshot}" alt="Imagem do feedback"/>` : ``,
-				`</div>`,
-			].join('\n'),
+			body,
 		});
 	}
 }
