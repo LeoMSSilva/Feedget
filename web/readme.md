@@ -36,7 +36,7 @@
 
 **TailwindCss** together with **postcss** and **autoprefixer** to style the web application.
 
-**TailwindCss scrollbar** to handle web page scrollbar.
+**Tailwind scrollbar** to handle web page scrollbar.
 
 **HeadlessUI** to implement accessibility in the application.
 
@@ -110,7 +110,7 @@ After being in the folder, run the following command to start the project:
 - React Dom
 - ReactJs
 - TailwindCss
-- TailwindCss Scrollbar
+- Tailwind Scrollbar
 - Typescript
 - Vite
 
