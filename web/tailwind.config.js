@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    './src/**/*.tsx'
+    './src/**/*.{html,tsx}'
   ],
   theme: {
     extend: {
@@ -13,6 +13,9 @@ module.exports = {
       borderRadius: {
         md: '4px',
       },
+      fontFamily: {
+				inter: 'Inter, sans-serif',
+			},
     },
   },
   plugins: [

@@ -1,11 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   @apply bg-[#09090A] text-zinc-100;
 }
+
 @layer base {
   html {
-    font-family: 'Inter';
+    @apply font-inter;
   }
 }
