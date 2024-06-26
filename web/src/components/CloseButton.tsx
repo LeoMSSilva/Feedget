@@ -1,5 +1,5 @@
-import { X } from 'phosphor-react';
-import { PopoverButton } from '@headlessui/react';
+import { PopoverButton } from "@headlessui/react";
+import { X } from "phosphor-react";
 
 export const CloseButton = () => {
   return (

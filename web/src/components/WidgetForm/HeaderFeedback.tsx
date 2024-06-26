@@ -1,6 +1,6 @@
-import { FeedbackType, feedbackTypes } from '.';
-import { BackButton } from '../BackButton';
-import { CloseButton } from '../CloseButton';
+import { type FeedbackType, feedbackTypes } from ".";
+import { BackButton } from "../BackButton";
+import { CloseButton } from "../CloseButton";
 
 export interface IHeaderFeedback {
   feedbackType: FeedbackType;
