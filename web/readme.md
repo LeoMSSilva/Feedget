@@ -50,6 +50,8 @@
 
 **Html2canvas** to perform page capture.
 
+**BiomeJs** for formatting and linting the code.
+
 This app is used to send feedback with images and comments.
 
 ---
@@ -109,6 +111,7 @@ After being in the folder, run the following command to start the project:
 
 - Autoprefixer
 - Axios
+- BiomeJs
 - HeadlessUI
 - Html2canvas
 - Javascript
