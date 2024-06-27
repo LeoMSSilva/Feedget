@@ -1,31 +1,31 @@
-import { useState } from 'react';
-import bugImageUrl from '../../assets/bug.svg';
-import ideaImageUrl from '../../assets/idea.svg';
-import thoughtImageUrl from '../../assets/thought.svg';
-import { FeedbackTypeStep } from './Steeps/FeedbackTypeStep';
-import { FeedbackContinueStep } from './Steeps/FeedbackContinueStep';
-import { FeedbackSuccessStep } from './Steeps/FeedbackSuccessStep';
+import { useState } from "react";
+import bugImageUrl from "../../assets/bug.svg";
+import ideaImageUrl from "../../assets/idea.svg";
+import thoughtImageUrl from "../../assets/thought.svg";
+import { FeedbackContinueStep } from "./Steeps/FeedbackContinueStep";
+import { FeedbackSuccessStep } from "./Steeps/FeedbackSuccessStep";
+import { FeedbackTypeStep } from "./Steeps/FeedbackTypeStep";
 
 export const feedbackTypes = {
   BUG: {
-    title: 'Problema',
+    title: "Problema",
     image: {
       url: bugImageUrl,
-      alt: 'Imagem de um inseto',
+      alt: "Imagem de um inseto",
     },
   },
   IDEA: {
-    title: 'Ideia',
+    title: "Ideia",
     image: {
       url: ideaImageUrl,
-      alt: 'Imagem de uma lâmpada',
+      alt: "Imagem de uma lâmpada",
     },
   },
   OTHER: {
-    title: 'Outro',
+    title: "Outro",
     image: {
       url: thoughtImageUrl,
-      alt: 'Imagem de um balão de pensamento',
+      alt: "Imagem de um balão de pensamento",
     },
   },
 };

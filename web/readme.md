@@ -30,19 +30,27 @@
 
 **Vite** to manage the entire application.
 
+**Vitejs plugin react swc** to speed up the build and auto reload in dev of the application.
+
 **Typescript** as a programming language used through the **reactJs** framework and transpiled to **javascript**.
 
 **React dom** to route application navigation.
 
+**Axios** to make requests to the application back-end.
+
 **TailwindCss** together with **postcss** and **autoprefixer** to style the web application.
 
-**TailwindCss scrollbar** to handle web page scrollbar.
+**Tailwindcss forms** for the forms part in tailwind.
+
+**Tailwind scrollbar** to handle web page scrollbar.
 
 **HeadlessUI** to implement accessibility in the application.
 
 **Phosphor react** to use icons.
 
 **Html2canvas** to perform page capture.
+
+**BiomeJs** for formatting and linting the code.
 
 This app is used to send feedback with images and comments.
 
@@ -102,6 +110,8 @@ After being in the folder, run the following command to start the project:
 # :computer: Techs
 
 - Autoprefixer
+- Axios
+- BiomeJs
 - HeadlessUI
 - Html2canvas
 - Javascript
@@ -109,10 +119,12 @@ After being in the folder, run the following command to start the project:
 - Postcss
 - React Dom
 - ReactJs
+- Tailwind Scrollbar
 - TailwindCss
-- TailwindCss Scrollbar
+- Tailwindcss forms
 - Typescript
 - Vite
+- Vitejs Plugin React SWC
 
 ---
 

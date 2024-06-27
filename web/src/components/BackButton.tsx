@@ -1,4 +1,4 @@
-import { ArrowLeft } from 'phosphor-react';
+import { ArrowLeft } from "phosphor-react";
 
 export interface IBackButton {
   goBack: () => void;
