@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "clean": "rm -rf node_modules build yarn.lock && yarn",
+    "clean": "rm -rf node_modules dist yarn.lock && yarn",
     "lint": "yarn biome check --write .",
     "lint-staged": "lint-staged",
     "prepare": "cd .. && husky web/.husky && echo 'echo \"Husky pre-commit started!\\\\n\"\nnpx lint-staged\necho \"\\\\nHusky pre-commit finished!\\\\n\"' > web/.husky/pre-commit"
