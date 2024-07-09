@@ -14,7 +14,7 @@ module.exports = {
         md: "4px",
       },
       fontFamily: {
-        inter: "Inter, sans-serif",
+        sans: "Inter",
       },
     },
   },

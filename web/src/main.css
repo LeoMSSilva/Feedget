@@ -5,9 +5,3 @@
 body {
   @apply bg-[#09090A] text-zinc-100;
 }
-
-@layer base {
-  html {
-    @apply font-inter;
-  }
-}
