@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup ./src/server.ts --minify",
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "tsx watch --env-file .env ./src/server.ts",
     "test": "jest --watchAll",
     "start": "node dist/server.js"
   },
@@ -29,9 +29,8 @@
     "@types/nodemailer": "^6.4.4",
     "jest": "^28.0.3",
     "prisma": "^3.13.0",
-    "ts-node": "^10.7.0",
-    "ts-node-dev": "^1.1.8",
     "tsup": "^8.2.4",
+    "tsx": "^4.17.0",
     "typescript": "^4.6.4"
   }
 }
