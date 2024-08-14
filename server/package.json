@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup ./src/server.ts --minify",
+    "clean": "rm -rf node_modules dist yarn.lock && yarn",
     "dev": "tsx watch --env-file .env ./src/server.ts",
     "test": "jest --watchAll",
     "start": "node dist/server.js"
