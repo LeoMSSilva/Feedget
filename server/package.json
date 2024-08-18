@@ -10,8 +10,9 @@
     "build": "tsup ./src/server.ts --minify",
     "clean": "rm -rf node_modules dist yarn.lock && yarn",
     "dev": "tsx watch --env-file .env ./src/server.ts",
-    "test": "jest --watchAll",
-    "start": "node dist/server.js"
+    "lint": "yarn biome check --write .",
+    "start": "node dist/server.js",
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
