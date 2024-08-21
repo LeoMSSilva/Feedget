@@ -3,6 +3,8 @@
   "files": {
     "ignore": [
       "./dist/**/*",
+      "./coverage/**/*",
+      "./node_modules/**/*",
       "**/*.json"
     ]
   },
