@@ -32,17 +32,23 @@
 
 **ExpressJs** to create a server.
 
+**Tsx** to manage all the auto-reloading of the application in the application dev.
+
+**Tsup** to speed up the build.
+
 **Cors** to allow access to api.
 
-**Prisma** to manage the entire application connection with the database.
+**Prisma** and **prisma client** to connect and use the database in the application.
 
 **SQLite** as a development database.
 
 **Nodemailer** to send emails.
 
-**Ts-node** to allow **typescript** code transpilation and **jest** execution, along with **@swc/cli**, **@swc/core** and **@swc/jest** to actually transpile code to **typescript** in **javascript**.
+**Jest** to perform automated unit testing. Along with **@swc/cli**, **@swc/core** and **@swc/jest** to speed up test performance.
 
-**Jest** to perform automated unit tests.
+**BiomeJs** to format and lint the code.
+
+**Husky** and **lint-staged** to automate tasks during the git flow.
 
 **SOLID** design pattern to make the application more scalable.
 
@@ -57,7 +63,7 @@ This api is used to send feedback with images and comments via email and save to
 - [Node.js](https://pt-br.nodejs.org/) (required)
 - [Yarn](https://yarnpkg.com/) (required)
 
-  **Then in order, clone the project.**
+**Then in order, clone the project.**
 
 By HTTPS, running this command:
 
@@ -106,17 +112,22 @@ After being in the folder, run the following command to start the project:
 - @swc/cli
 - @swc/core
 - @swc/jest
+- BiomeJs
 - Cors
 - ExpressJs
 - Javascript
 - Jest
+- Husky
+- Lint Staged
 - NodeJs
 - Nodemailer
 - Prisma
+- Prisma Client
 - SOLID
 - SQLite
+- Tsup
+- Tsx
 - Typescript
-- Ts-node
 
 ---
 
