@@ -1,6 +1,6 @@
 <h1 align="center">Feedget Web
 	<br/>
-	<img width=900 heigh=600 alt="Front-end Project Demo" src="./web.gif">
+	<img width=900 heigh=600 alt="Front-end Project Demo" src="./demonstration.gif">
 	<br/>
 </h1>
 

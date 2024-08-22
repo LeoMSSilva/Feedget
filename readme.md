@@ -1,8 +1,8 @@
 <h1 align="center">Feedget
 	<br/>
-	<img width=900 heigh=600 alt="Next Level Week Return Background" src="./nlw.png">
-	<img width=900 heigh=600 alt="Front-end Project Demo" src="./web/web.gif">
-	<img width=900 heigh=600 alt="Back-end Project Demo" src="./server/server.gif">
+	<img width=99% height=400 alt="Next Level Week Return Background" src="./nlw.png">
+	<img width=49% height=250 alt="Front-end Project Demo" src="./web/demonstration.gif">
+	<img width=49% height=250 alt="Back-end Project Demo" src="./server/demonstration.gif">
 	<br/>
 </h1>
 
