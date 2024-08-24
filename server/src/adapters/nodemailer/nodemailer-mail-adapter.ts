@@ -1,11 +1,11 @@
 import nodemailer from "nodemailer";
 import type { IMailAdapter, ISendMailData } from "../mail-adapter";
 
-const { MAIL_HOST, MAIL_USERNAME, MAIL_PASSWORD } = process.env;
+const { MAIL_HOST, MAIL_PASSWORD, MAIL_PORT, MAIL_USERNAME } = process.env;
 
 export const transport = nodemailer.createTransport({
   host: MAIL_HOST,
-  port: 2525,
+  port: Number(MAIL_PORT) || 2525,
   auth: {
     user: MAIL_USERNAME,
     pass: MAIL_PASSWORD,
