@@ -13,7 +13,7 @@
     "lint": "yarn biome check --write .",
     "lint-staged": "lint-staged",
     "prepare": "cd .. && husky server/.husky && echo 'echo \"Husky pre-commit started!\\\\n\"\nnpx lint-staged\necho \"\\\\nHusky pre-commit finished!\\\\n\"' > server/.husky/pre-commit",
-    "start": "node dist/server.js",
+    "start": "node --env-file .env dist/index.js",
     "test": "jest --watchAll"
   },
   "lint-staged": {
